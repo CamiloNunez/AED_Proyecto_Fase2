@@ -1,22 +1,17 @@
-
-public abstract class Persona
+package SWork.POO;
+public class Persona
 {
-    private int dni;
     private String nombres;
     private String apellidos;
-    public Persona(int dni, String nombres, String apellidos)
+    private int edad;
+    public Persona(String nombres, String apellidos,int edad)
     {
-        this.dni = dni;
         this.nombres = nombres;
         this.apellidos = apellidos;
+        this.setEdad(edad);
     }
-    public int getDni() 
-    {
-        return dni;
-    }
-    public void setDni(int dni) 
-    {
-        this.dni = dni;
+    public Persona() {
+		// TODO Auto-generated constructor stub
     }
     public String getNombres() 
     {
@@ -34,11 +29,10 @@ public abstract class Persona
     {
         this.apellidos = apellidos;
     }
-    public abstract void guardar();
-    public abstract void actualizar();
-    public abstract String toString();
-	public int CompareTo(Persona o) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int getEdad() {
+		return edad;
+	}
+	public void setEdad(int edad) {
+		this.edad = edad;
 	}
 }
