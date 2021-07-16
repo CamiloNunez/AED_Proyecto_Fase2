@@ -2,11 +2,33 @@ package SWork.POO;
 
 public class Carrera {
 	String NombreCarrera;
-	String Tipo;
+	int Tipo;
 	String NombreUniversidad;
-	String Estado;
+	boolean Estado;
 	public Carrera() {
 		
+	}
+	public String ObtenerEstado() {
+		if(Estado == true) {
+			return "terminado";
+		}
+		else {
+			return "en curso";
+		}
+	}
+	public String ObtenerTipoProfesional() {
+		if(Tipo == 1) {
+			return "Tecnico";
+		}
+		if(Tipo == 2) {
+			return "Ingeniero";
+		}
+		if(Tipo == 3) {
+			return "Licenciado";
+		}
+		else {
+			return "Tipo Profesional no especificado";
+		}
 	}
 	public String getNombreCarrera() {
 		return NombreCarrera;
@@ -14,10 +36,10 @@ public class Carrera {
 	public void setNombreCarrera(String nombreCarrera) {
 		NombreCarrera = nombreCarrera;
 	}
-	public String getTipo() {
+	public int getTipo() {
 		return Tipo;
 	}
-	public void setTipo(String tipo) {
+	public void setTipo(int tipo) {
 		Tipo = tipo;
 	}
 	public String getNombreUniversidad() {
@@ -26,11 +48,13 @@ public class Carrera {
 	public void setNombreUniversidad(String nombreUniversidad) {
 		NombreUniversidad = nombreUniversidad;
 	}
-	public String getEstado() {
+	public boolean getEstado() {
 		return Estado;
 	}
-	public void setEstado(String estado) {
+	public void setEstado(boolean estado) {
 		Estado = estado;
 	}
-	
+	public String toString() {
+		return "Carrera: "+this.NombreCarrera+"Centro de Estudios: "+this.NombreUniversidad+"Tipo de Profesional: "+this.ObtenerTipoProfesional()+"Estado: "+this.ObtenerEstado();
+	}
 }
