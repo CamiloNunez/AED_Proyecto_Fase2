@@ -11,5 +11,7 @@ public class Test
     {
     	ListLinked<Empresa> SistemaT = new ListLinked<Empresa>();
     	ListLinked<Usuario> Usuarios = new ListLinked<Usuario>();
+    	ListLinked<Trabajador> SistemaTrabajador = new ListLinked<Trabajador>();
+    	ListLinked<Empleador> SistemaEmpleadores = new ListLinked<Empleador>();
     }
 }
