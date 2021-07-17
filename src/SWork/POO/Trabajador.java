@@ -14,7 +14,9 @@ public class Trabajador extends Persona implements Comparable<Trabajador>
     private Usuario usuario;
     private String correo;
     private ListLinked<Carrera> carreras;
+    private boolean estado;
     public static int contador = 0;
+    private Empleador empleador;
     public Trabajador(int codigo,String nombres, String apellidos, int edad, String categoria, double salario, int telefono, double calificacion, CV cv)
     {
         super(nombres,apellidos,edad);
@@ -282,5 +284,17 @@ public class Trabajador extends Persona implements Comparable<Trabajador>
 	}
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+	public boolean isEstado() {
+		return estado;
+	}
+	public void setEstado(boolean estado) {
+		this.estado = estado;
+	}
+	public Empleador getEmpleador() {
+		return empleador;
+	}
+	public void setEmpleador(Empleador empleador) {
+		this.empleador = empleador;
 	}
 }

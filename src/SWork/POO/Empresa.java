@@ -78,6 +78,24 @@ public class Empresa {
 	public Empresa(int idEmpresa) {
 		this.idEmpresa = idEmpresa;
 	}
+	public void MostrarPostulantes() {
+		if(!this.postulantes.isEmpty()) {
+			System.out.println(this.postulantes);
+			return;
+		}
+		System.out.println("lista de postulantes vacia");
+	}
+	public static Usuario BuscarAnuncio(ListLinked<Usuario> o,int idAnuncio) {
+		int posicion;
+		for(int i = 0;i<o.length();i++) {
+			posicion = o.getNodeAt(i).getData().getEmpresa().Anuncios.search(new Anuncio(idAnuncio));
+			if(posicion == -1) {
+				return o.getNodeAt(posicion).getData();
+			}
+		}
+		System.out.println("Anuncio no encontrado");
+		return null;
+	}
 	public static Empresa AgregarEmpresa() {
 		Scanner in = new Scanner(System.in);
 		System.out.println("<=======\tAGREGANDO NUEVA EMPRESA\t=======>");
@@ -87,39 +105,47 @@ public class Empresa {
 		String Rubro = in.next();
 		return new Empresa(NombreEmpresa,Rubro);
 	}
-	public void Contratar(Trabajador o) throws ExceptionIsEmpty {
+	public void Contratar() throws ExceptionIsEmpty {
 		Scanner s = new Scanner(System.in);
-		String opcion;
-		System.out.println("<=======\tContratando a Trabajador\t=======>");
-		System.out.println("Nombre: "+o.getNombres());
-		System.out.println("Apellidos: "+o.getApellidos());
-		System.out.println(o.getCarreras());
-		System.out.println("Telefono"+o.getTelefono());
-		System.out.println("Correo"+o.getCorreo());
-		System.out.println("Edad"+o.getEdad());
-		System.out.println("Calificacion: "+o.getCalificacion());
-		System.out.println("Desea contratar a este Trabajador? (Si/No)");
-		opcion = s.next();
-		while(!(opcion.equalsIgnoreCase("si")||opcion.equalsIgnoreCase("No"))) {
-			System.out.println("Opcion no valida por favor ingrese (Si/No)");
-			opcion =s.next();
-		}
-		if(opcion.equalsIgnoreCase("si")) {
-			o.setEmpresa(Empresa.this);
-			System.out.println("Ingrese a que area de la empresa pertenecera:");
-			o.setCategoria(s.next());
-			System.out.println("Ingrese su salario de trabajador");
-			o.setSalario(s.nextDouble());
-			while(o.getSalario() <0) {
-				System.out.println("Ingrese Salario");
-				o.setSalario(s.nextDouble());
+		String opcion = " ";
+		while(!this.postulantes.isEmpty()||!opcion.equalsIgnoreCase("No")) {
+			Trabajador o = this.postulantes.dequeue();
+			System.out.println("<=======\tContratando a Trabajador\t=======>");
+			System.out.println("Nombre: "+o.getNombres());
+			System.out.println("Apellidos: "+o.getApellidos());
+			System.out.println(o.getCarreras());
+			System.out.println("Telefono"+o.getTelefono());
+			System.out.println("Correo"+o.getCorreo());
+			System.out.println("Edad"+o.getEdad());
+			System.out.println("Calificacion: "+o.getCalificacion());
+			System.out.println("Desea contratar a este Trabajador? (Si/No)");
+			opcion = s.next();
+			while(!(opcion.equalsIgnoreCase("si")||opcion.equalsIgnoreCase("No"))) {
+				System.out.println("Opcion no valida por favor ingrese (Si/No)");
+				opcion =s.next();
 			}
-			this.trabajadores.insertLast(o);
-			System.out.println("Trabajador contratado con exito!");
-			this.postulantes.dequeue();
-		}
-		else {
-			System.out.println("Trabajador No contratado");	
+			if(opcion.equalsIgnoreCase("si")) {
+				o.setEmpresa(Empresa.this);
+				System.out.println("Ingrese a que area de la empresa pertenecera:");
+				o.setCategoria(s.next());
+				System.out.println("Ingrese su salario de trabajador");
+				o.setSalario(s.nextDouble());
+				while(o.getSalario() <0) {
+					System.out.println("Ingrese Salario");
+					o.setSalario(s.nextDouble());
+				}
+				this.trabajadores.insertLast(o);
+				System.out.println("Trabajador contratado con exito!");
+			}
+			else {
+				System.out.println("Trabajador No contratado");	
+			}
+			System.out.println("Desea contratar mas trabajadores? (Si/No)");
+			opcion = s.next();
+			while(!(opcion.equalsIgnoreCase("No")||opcion.equalsIgnoreCase("Si"))) {
+				System.out.println("Opcion no valida, por favor ingrese (Si/No)");
+				opcion = s.next();
+			}
 		}
 	}
 	public static void MostrarAnuncios(ListLinked<Usuario> usuario) {

@@ -2,23 +2,32 @@ package SWork.POO;
 
 import java.util.*;
 
+import SWork.tools.Colas.ExceptionIsEmpty;
 import SWork.tools.Colas.LinkedQueue;
+import SWork.tools.HashC.HashC;
 import SWork.tools.lineales.ListLinked;
 
 public class Empleador extends Persona{
 	Empresa empresa;
 	int IdEmpleador;
 	Usuario usuario;
-	ListLinked<Trabajador> trabajadores;
-	public static int contador;
+	ListLinked<Trabajador> trabajadores = new ListLinked<Trabajador>();
+	ListLinked<Anuncio> Anuncios = new ListLinked<Anuncio>();
 	LinkedQueue<Trabajador> postulantes = new LinkedQueue<Trabajador>();
+	public static int contador;
 	public Empleador(String Nombre, String Apellido,int edad, Empresa empresa) {
 		super(Nombre,Apellido,edad);
 		this.empresa = empresa;
 		contador++;
 		this.IdEmpleador = contador;
 	}
-	
+	public void MostrarPostulantes() {
+		if(!this.postulantes.isEmpty()) {
+			System.out.println(this.postulantes);
+			return;
+		}
+		System.out.println("lista de postulantes vacia");
+	}
 	public static Empleador IngresarEmpleador() {
 		Scanner in = new Scanner(System.in);
 		Empresa EmpresaEmpleador = new Empresa();
@@ -51,39 +60,63 @@ public class Empleador extends Persona{
 			return null;
 		}
 	}
-	public void Contratar(Trabajador o) {
+	public void ReporteTrabajadores() {
+		HashC<Trabajador> reporte = new HashC<Trabajador>(this.trabajadores.length());
+		for(int i = 0;i<this.trabajadores.length();i++) {
+			reporte.insertarEncadenamiento(trabajadores.getNodeAt(i).getData().getCodigo(), trabajadores.getNodeAt(i).getData());
+		}
+		System.out.println(reporte);
+	}
+	public void CrearAnuncio() {
+		this.Anuncios.insertLast(Anuncio.PonerAnuncio());
+	}
+	public static void MostrarAnuncios(ListLinked<Usuario> usuario) {
+		for(int i = 0;i<usuario.length();i++) {
+			System.out.println("Anuncios de: "+usuario.getNodeAt(i).getData().getEmpresa().getNombreEmpresa());
+			usuario.getNodeAt(i).getData().getEmpresa().getAnuncios();
+		}
+	}
+	public void Contratar() throws ExceptionIsEmpty {
 		Scanner s = new Scanner(System.in);
-		String opcion;
-		System.out.println("<=======\tContratando a Trabajador\t=======>");
-		System.out.println("");
-		System.out.println("Nombre: "+o.getNombres());
-		System.out.println("Apellidos: "+o.getApellidos());
-		System.out.println(o.getCarreras());
-		System.out.println("Telefono"+o.getTelefono());
-		System.out.println("Correo"+o.getCorreo());
-		System.out.println("Edad"+o.getEdad());
-		System.out.println("Calificacion: "+o.getCalificacion());
-		System.out.println("Desea contratar a este Trabajador? (Si/No)");
-		opcion = s.next();
-		while(!(opcion.equalsIgnoreCase("si")||opcion.equalsIgnoreCase("No"))) {
-			System.out.println("Opcion no valida por favor ingrese (Si/No)");
-			opcion =s.next();
-		}
-		if(opcion.equalsIgnoreCase("si")) {
-			o.setEmpresa(this.empresa);
-			System.out.println("Ingrese a que area de la empresa pertenecera:");
-			o.setCategoria(s.next());
-			System.out.println("Ingrese su salario de trabajador");
-			o.setSalario(s.nextDouble());
-			while(o.getSalario() <0) {
-				System.out.println("Ingrese Salario");
-				o.setSalario(s.nextDouble());
+		String opcion = " ";
+		while(!this.postulantes.isEmpty()||!opcion.equalsIgnoreCase("No")) {
+			Trabajador o = this.postulantes.dequeue();
+			System.out.println("<=======\tContratando a Trabajador\t=======>");
+			System.out.println("Nombre: "+o.getNombres());
+			System.out.println("Apellidos: "+o.getApellidos());
+			System.out.println(o.getCarreras());
+			System.out.println("Telefono"+o.getTelefono());
+			System.out.println("Correo"+o.getCorreo());
+			System.out.println("Edad"+o.getEdad());
+			System.out.println("Calificacion: "+o.getCalificacion());
+			System.out.println("Desea contratar a este Trabajador? (Si/No)");
+			opcion = s.next();
+			while(!(opcion.equalsIgnoreCase("si")||opcion.equalsIgnoreCase("No"))) {
+				System.out.println("Opcion no valida por favor ingrese (Si/No)");
+				opcion =s.next();
 			}
-			this.trabajadores.insertLast(o);
-			System.out.println("Trabajador contratado con exito!");
-		}
-		else {
-			System.out.println("Trabajador No contratado");	
+			if(opcion.equalsIgnoreCase("si")) {
+				o.setEmpleador(Empleador.this);
+				System.out.println("Ingrese a que area de la empresa pertenecera:");
+				o.setCategoria(s.next());
+				System.out.println("Ingrese su salario de trabajador");
+				o.setSalario(s.nextDouble());
+				while(o.getSalario() <0) {
+					System.out.println("Ingrese Salario");
+					o.setSalario(s.nextDouble());
+				}
+				this.trabajadores.insertLast(o);
+				System.out.println("Trabajador contratado con exito!");
+			}
+			else {
+				System.out.println("Trabajador No contratado");	
+			}
+			System.out.println("Desea contratar mas trabajadores? (Si/No)");
+			opcion = s.next();
+			while(!(opcion.equalsIgnoreCase("No")||opcion.equalsIgnoreCase("Si"))) {
+				System.out.println("Opcion no valida, por favor ingrese (Si/No)");
+				opcion = s.next();
+			}
 		}
 	}
 }
