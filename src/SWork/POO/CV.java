@@ -8,6 +8,9 @@ public class CV {
 	public CV() {
 		
 	}
+	public CV(Trabajador trabajador) {
+		this.trabajador = trabajador;
+	}
 	public static void MostrarEstilos() {
 		System.out.println("<=======\tMostrando Estilos\t=======>");
 		System.out.println("Estilo 1");

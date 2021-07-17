@@ -5,8 +5,11 @@ public class Carrera {
 	int Tipo;
 	String NombreUniversidad;
 	boolean Estado;
-	public Carrera() {
-		
+	public Carrera(String NombreCarrera,String NombreUniversidad, int Tipo, boolean Estado) {
+		this.NombreCarrera = NombreCarrera;
+		this.NombreUniversidad = NombreUniversidad;
+		this.Tipo = Tipo;
+		this.Estado = Estado;
 	}
 	public String ObtenerEstado() {
 		if(Estado == true) {
