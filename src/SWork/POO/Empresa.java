@@ -148,6 +148,9 @@ public class Empresa {
 			}
 		}
 	}
+	public void MostrarAnuncios() {
+		System.out.println(this.Anuncios);
+	}
 	public static void MostrarAnuncios(ListLinked<Usuario> usuario) {
 		for(int i = 0;i<usuario.length();i++) {
 			System.out.println("Anuncios de: "+usuario.getNodeAt(i).getData().getEmpresa().getNombreEmpresa());
@@ -167,7 +170,7 @@ public class Empresa {
 		
 	}
 	public void ReporteTrabajadores() {
-		HashC<Trabajador> reporte = new HashC<Trabajador>(this.trabajadores.length());
+		HashC<Trabajador> reporte = new HashC<Trabajador>(10);
 		for(int i = 0;i<this.trabajadores.length();i++) {
 			reporte.insertarEncadenamiento(trabajadores.getNodeAt(i).getData().getCodigo(), trabajadores.getNodeAt(i).getData());
 		}

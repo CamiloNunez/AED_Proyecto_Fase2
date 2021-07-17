@@ -21,6 +21,9 @@ public class Empleador extends Persona{
 		contador++;
 		this.IdEmpleador = contador;
 	}
+	public Empleador() {
+		// TODO Auto-generated constructor stub
+	}
 	public void MostrarPostulantes() {
 		if(!this.postulantes.isEmpty()) {
 			System.out.println(this.postulantes);

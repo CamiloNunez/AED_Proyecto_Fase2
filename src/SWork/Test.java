@@ -99,20 +99,116 @@ public class Test
 	    						Usuarios.getNodeAt(posicion).getData().getTrabajador().getCurriculum().MostrarCV();
 	    						Usuarios.getNodeAt(posicion).getData().getTrabajador().ActualizarCV();
 	    						break;
+	    					case 7:
+	    						System.out.println("Cerrando Sesion...");
+	    						break;
 	    					}
 	    				}
 	    				break;
 	    			case 2:
+	    				posicion = Usuarios.search(Usuario.Login(new Empresa()));
+	    				if(posicion == -1) {
+	    					System.out.println("Usuario no encontrado");
+	    				}
+	    				else {
+	    					System.out.println("Bienvenido de nuevo: "+Usuarios.getNodeAt(posicion).getData().getNombreUsuario()+
+	    							", por favor ingrese una opcion \n\t1. Crear Anuncio \n\t2. Ver Perfil \n\t3. Actualizar Datos \n\t4. Ver los anuncios de la empresa"
+	    							+ "\n\t5. VerPostulantes \n\t6. Reporte Trabajadores\n\t7.Eliminar Anuncio \n\t8.CerrarSesion");
+	    					opcion1 = in.nextInt();
+	    					switch(opcion1) {
+	    					case 1:
+	    						Usuarios.getNodeAt(posicion).getData().getTrabajador().ObtenerCalificacion();
+	    						break;
+	    					case 2:
+		    					Usuarios.getNodeAt(posicion).getData().verPerfil();	
+	    						break;
+	    					case 3:
+	    						Usuarios.getNodeAt(posicion).getData().actualizar();
+	    						break;
+	    					case 4:
+	    						Empresa.MostrarAnuncios(Usuarios);
+	    						System.out.println("Desea Postular?(Si/No");
+	    						opcion3 = in.next();
+	    						while(!(opcion3.equalsIgnoreCase("Si")||opcion.equalsIgnoreCase("No"))){
+	    				    		System.out.println("Ingrese una opcion Correcta!, (Si/No)");
+	    				    		opcion3 = in.next();
+	    				    	}
+	    						if(opcion3.equalsIgnoreCase("Si")) {
+	    							System.out.println("Ingrese el numero de anuncio que desea postular");
+	    							opcion2 = in.nextInt();
+	    							System.out.println("Usted esta postulando al anuncio N°:"+opcion2);
+	    							posicion1 = Usuarios.search(Empresa.BuscarAnuncio(Usuarios, opcion2));
+	    							Usuarios.getNodeAt(posicion).getData().getTrabajador().Postular(Usuarios.getNodeAt(posicion1).getData().getEmpresa());
+	    						}
+	    						break;
+	    					case 5:
+	    						Usuarios.getNodeAt(posicion).getData().getTrabajador().IngresarCarrera();
+	    						Usuarios.getNodeAt(posicion).getData().getTrabajador().ActualizarCV();
+	    						break;
+	    					case 6:
+	    						Usuarios.getNodeAt(posicion).getData().getTrabajador().ActualizarCV();
+	    						Usuarios.getNodeAt(posicion).getData().getTrabajador().getCurriculum().MostrarCV();
+	    						Usuarios.getNodeAt(posicion).getData().getTrabajador().ActualizarCV();
+	    						break;
+	    					case 7:
+	    						break;
+	    					}
+	    				}
 	    				break;
 	    			case 3:
+	    				posicion = Usuarios.search(Usuario.Login(new Empleador()));
+	    				if(posicion == -1) {
+	    					System.out.println("Usuario no encontrado");
+	    				}
+	    				else {
+	    					System.out.println("Bienvenido de nuevo: "+Usuarios.getNodeAt(posicion).getData().getNombreUsuario()+
+	    							", por favor ingrese una opcion \n\t1. Obtener Calificacion \n\t2. Ver Perfil \n\t3. Actualizar Datos \n\t4. Ver anuncios de Trabajo"
+	    							+ "\n\t5. Agregar Carrera a CV \n\t6. Mostrar CV\n\t7.CerrarSesion");
+	    					opcion1 = in.nextInt();
+	    					switch(opcion1) {
+	    					case 1:
+	    						Usuarios.getNodeAt(posicion).getData().getTrabajador().ObtenerCalificacion();
+	    						break;
+	    					case 2:
+		    					Usuarios.getNodeAt(posicion).getData().verPerfil();	
+	    						break;
+	    					case 3:
+	    						Usuarios.getNodeAt(posicion).getData().actualizar();
+	    						break;
+	    					case 4:
+	    						Empresa.MostrarAnuncios(Usuarios);
+	    						System.out.println("Desea Postular?(Si/No");
+	    						opcion3 = in.next();
+	    						while(!(opcion3.equalsIgnoreCase("Si")||opcion.equalsIgnoreCase("No"))){
+	    				    		System.out.println("Ingrese una opcion Correcta!, (Si/No)");
+	    				    		opcion3 = in.next();
+	    				    	}
+	    						if(opcion3.equalsIgnoreCase("Si")) {
+	    							System.out.println("Ingrese el numero de anuncio que desea postular");
+	    							opcion2 = in.nextInt();
+	    							System.out.println("Usted esta postulando al anuncio N°:"+opcion2);
+	    							posicion1 = Usuarios.search(Empresa.BuscarAnuncio(Usuarios, opcion2));
+	    							Usuarios.getNodeAt(posicion).getData().getTrabajador().Postular(Usuarios.getNodeAt(posicion1).getData().getEmpresa());
+	    						}
+	    						break;
+	    					case 5:
+	    						Usuarios.getNodeAt(posicion).getData().getTrabajador().IngresarCarrera();
+	    						Usuarios.getNodeAt(posicion).getData().getTrabajador().ActualizarCV();
+	    						break;
+	    					case 6:
+	    						Usuarios.getNodeAt(posicion).getData().getTrabajador().ActualizarCV();
+	    						Usuarios.getNodeAt(posicion).getData().getTrabajador().getCurriculum().MostrarCV();
+	    						Usuarios.getNodeAt(posicion).getData().getTrabajador().ActualizarCV();
+	    						break;
+	    					}
+	    				}
 	    				break;
-	    			}
+	    				}
 	    		case 3:
 	    			System.out.println("Saliendo del Sistema, Hasta luego...");
 	    			opcion = "No";
 	    			break;
-	    			
-    		}
+    		}	
     	}
     }
 }
