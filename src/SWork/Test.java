@@ -57,7 +57,10 @@ public class Test
 	    					System.out.println("Usuario no encontrado");
 	    				}
 	    				else {
-	    					System.out.println("Bienvenido de nuevo: "+Usuarios.getNodeAt(posicion));
+	    					System.out.println("Bienvenido de nuevo: "+Usuarios.getNodeAt(posicion).getData().getNombreUsuario()+
+	    							", por favor ingrese una opcion \n\t1. Obtener Calificacion \n\t2. Ver Perfil \n\t3. Actualizar Datos \n\t4. Ver anuncios de Trabajo"
+	    							+ "\n\t5. Agregar Carrera a CV \n\t6. Mostrar CV");
+	    					opcion1 = in.nextInt();
 	    				}
 	    			}
 	    			

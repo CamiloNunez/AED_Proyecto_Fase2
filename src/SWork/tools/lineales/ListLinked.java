@@ -104,7 +104,7 @@ public class ListLinked <T> implements TDAList<T> {
 		String str = "";
 		Node <T> aux = this.first;
 		for(int i = 0; aux != null; aux = aux.getNext(), i++)
-			str += aux.getData()+"\n";
+			str += (i+1)+". "+aux.getData()+"\n";
 		return str;
 		
 	}
