@@ -148,7 +148,7 @@ public class Empresa {
 			}
 		}
 	}
-	public void MostrarAnuncios() {
+	public void MostrarAnuncio() {
 		System.out.println(this.Anuncios);
 	}
 	public static void MostrarAnuncios(ListLinked<Usuario> usuario) {

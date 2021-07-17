@@ -64,7 +64,7 @@ public class Empleador extends Persona{
 		}
 	}
 	public void ReporteTrabajadores() {
-		HashC<Trabajador> reporte = new HashC<Trabajador>(this.trabajadores.length());
+		HashC<Trabajador> reporte = new HashC<Trabajador>(10);
 		for(int i = 0;i<this.trabajadores.length();i++) {
 			reporte.insertarEncadenamiento(trabajadores.getNodeAt(i).getData().getCodigo(), trabajadores.getNodeAt(i).getData());
 		}
@@ -78,6 +78,9 @@ public class Empleador extends Persona{
 			System.out.println("Anuncios de: "+usuario.getNodeAt(i).getData().getEmpresa().getNombreEmpresa());
 			usuario.getNodeAt(i).getData().getEmpresa().getAnuncios();
 		}
+	}
+	public void MostrarAnuncio() {
+		System.out.println(this.Anuncios);
 	}
 	public void Contratar() throws ExceptionIsEmpty {
 		Scanner s = new Scanner(System.in);

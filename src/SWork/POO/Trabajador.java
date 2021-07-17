@@ -56,7 +56,7 @@ public class Trabajador extends Persona implements Comparable<Trabajador>
     	Scanner in = new Scanner(System.in);
     	int opcion;
     	System.out.println("<=======\tInicializando Test para obtener calificacion\t========>");
-    	System.out.println("Tiene experiencia laboral?, 0Ingrese una opcion: \n\t1. Poca \n\t2. Moderada \n\t3. Parcialmente \n\t4. En buena proporcion \nt5. En grande Proporcion");
+    	System.out.println("Tiene experiencia laboral?, Ingrese una opcion: \n\t1. Poca \n\t2. Moderada \n\t3. Parcialmente \n\t4. En buena proporcion \n\t5. En grande Proporcion");
     	opcion = in.nextInt();
     	while(opcion < 1 || opcion > 5) {
     		System.out.println("Opcion incorrecta Por favor ingrese (1/2/3/4 o 5)");
@@ -79,7 +79,7 @@ public class Trabajador extends Persona implements Comparable<Trabajador>
     		this.calificacion = 5;
     		break;
     	}
-    	System.out.println("Tiene experiencia en trabajar en equipo?\n\t1. Poca \\n\\t2. Moderada \\n\\t3. Parcialmente \\n\\t4. En buena proporcion \\nt5. En grande Proporcion");
+    	System.out.println("Tiene experiencia en trabajar en equipo?\n\t1. Poca \n\t2. Moderada \n\t3. Parcialmente \n\t4. En buena proporcion \n\t5. En grande Proporcion");
     	opcion = in.nextInt();
     	while(opcion < 1 || opcion > 5) {
     		System.out.println("Opcion incorrecta Por favor ingrese (1/2/3/4 o 5)");
@@ -102,7 +102,7 @@ public class Trabajador extends Persona implements Comparable<Trabajador>
     		this.calificacion += 5;
     		break;
     	}
-    	System.out.println("Se siente Capacitado para resolver cualquier tipo de problema?\n\t1. Poco \\n\\t2. Moderado \\n\\t3. Parcialmente \\n\\t4. En buena proporcion \\nt5. En grande Proporcion");
+    	System.out.println("Se siente Capacitado para resolver cualquier tipo de problema?\n\t1. Poco \n\t2. Moderado \n\t3. Parcialmente \n\t4. En buena proporcion \n\t5. En grande Proporcion");
     	opcion = in.nextInt();
     	while(opcion < 1 || opcion > 5) {
     		System.out.println("Opcion incorrecta Por favor ingrese (1/2/3/4 o 5)");
@@ -125,7 +125,7 @@ public class Trabajador extends Persona implements Comparable<Trabajador>
     		this.calificacion += 5;
     		break;
     	}
-    	System.out.println("Su calificacion final es:"+this.calificacion);
+    	System.out.println("Su calificacion final es:"+this.calificacion/3);
     }
     public void Postular(Empresa empresa) {
     	empresa.postulantes.enqueue(Trabajador.this);

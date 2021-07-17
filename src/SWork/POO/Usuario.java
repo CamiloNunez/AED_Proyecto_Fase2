@@ -14,6 +14,7 @@ public class Usuario implements Comparable<Usuario>
         this.TUsuario = TUsuario;
         this.trabajador = trabajador;
         this.NombreUsuario = NombreUsuario;
+        this.password = password;
     }
     public Usuario() {
     	super();
@@ -26,7 +27,6 @@ public class Usuario implements Comparable<Usuario>
     	this.NombreUsuario = NombreUsuario;
     }
     public Usuario(String NombreUsuario,String password) {
-    	super();
     	this.NombreUsuario = NombreUsuario;
     	this.password = password;
     }
@@ -58,7 +58,7 @@ public class Usuario implements Comparable<Usuario>
     	Scanner in = new Scanner(System.in);
     	String opcion;
     	System.out.println("BIENVENIDO!, AL PARECER USTED ES UN NUEVO Usuario TRABAJADOR POR FAVOR INGRESE SUS DATOS");
-    	System.out.println("Su nombre de usuario recomendado es:"+o.getNombres()+" "+o.getApellidos()+"Desea cambiarlo?(Si/No)");
+    	System.out.println("Su nombre de usuario recomendado es:"+o.getNombres()+o.getApellidos()+" Desea cambiarlo?(Si/No)");
     	opcion = in.next();
     	while(!(opcion.equalsIgnoreCase("Si")||opcion.equalsIgnoreCase("No"))) {
     		System.out.println("Error al ingresar la opcion, por favor ingrese (Si/No)");
@@ -67,6 +67,12 @@ public class Usuario implements Comparable<Usuario>
     		String NombreUsuario = o.getNombres()+" "+o.getApellidos();
     		System.out.println("Ingrese su contraseña:");
     		String password = in.next();
+    		System.out.println("Confirme por favor su contraseña");
+    		String password1= in.next(); 
+    		while(!password1.equals(password)) {
+    			System.out.println("Contraseñas no concuerdan Ingrese de nuevo");
+    			password1 = in.next();
+    		}
     		return new Usuario(NombreUsuario,1,password,o);
     	}
     	else {
@@ -74,6 +80,12 @@ public class Usuario implements Comparable<Usuario>
     		String NombreUsuario = in.next();
     		System.out.println("Ingrese su contraseña:");
     		String password = in.next();
+    		System.out.println("Confirme por favor su contraseña");
+    		String password1= in.next(); 
+    		while(!password1.equals(password)) {
+    			System.out.println("Contraseñas no concuerdan Ingrese de nuevo");
+    			password1 = in.next();
+    		}
     		return new Usuario(NombreUsuario,1,password,o);
     	}
     }
@@ -82,7 +94,7 @@ public class Usuario implements Comparable<Usuario>
     	String opcion;
     	System.out.println("<========\tNuevo Usuario\t=======>");
     	System.out.println("BIENVENIDO!, AL PARECER USTED ES UN NUEVO Usuario EMPRESA POR FAVOR INGRESE SUS DATOS");
-    	System.out.println("Su nombre de usuario recomendado es:"+"Empresa"+o.NombreEmpresa+"Desea cambiarlo?(Si/No)");
+    	System.out.println("Su nombre de usuario recomendado es:"+"Empresa"+o.NombreEmpresa+" Desea cambiarlo?(Si/No)");
     	opcion = in.next();
     	while(!(opcion.equalsIgnoreCase("Si")||opcion.equalsIgnoreCase("No"))) {
     		System.out.println("Error al ingresar la opcion, por favor ingrese (Si/No)");
@@ -91,6 +103,12 @@ public class Usuario implements Comparable<Usuario>
     		String NombreUsuario = "Empresa "+o.NombreEmpresa;
     		System.out.println("Ingrese su contraseña:");
     		String password = in.next();
+    		System.out.println("Confirme por favor su contraseña");
+    		String password1= in.next(); 
+    		while(!password1.equals(password)) {
+    			System.out.println("Contraseñas no concuerdan Ingrese de nuevo");
+    			password1 = in.next();
+    		}
     		return new Usuario(NombreUsuario,2,password,o);
     	}
     	else {
@@ -98,6 +116,12 @@ public class Usuario implements Comparable<Usuario>
     		String NombreUsuario = in.next();
     		System.out.println("Ingrese su contraseña:");
     		String password = in.next();
+    		System.out.println("Confirme por favor su contraseña");
+    		String password1= in.next(); 
+    		while(!password1.equals(password)) {
+    			System.out.println("Contraseñas no concuerdan Ingrese de nuevo");
+    			password1 = in.next();
+    		}
     		return new Usuario(NombreUsuario,2,password,o);
     	}
     }
@@ -106,15 +130,21 @@ public class Usuario implements Comparable<Usuario>
     	String opcion;
     	String passwordV = " ";
     	System.out.println("BIENVENIDO!, AL PARECER USTED ES UN NUEVO Usuario EMPLEADOR POR FAVOR INGRESE SUS DATOS");
-    	System.out.println("Su nombre de usuario recomendado es: "+o.getNombres()+" "+o.getApellidos()+" Desea cambiarlo?(Si/No)");
+    	System.out.println("Su nombre de usuario recomendado es: "+o.getNombres()+o.getApellidos()+" Desea cambiarlo?(Si/No)");
     	opcion = in.next();
     	while(!(opcion.equalsIgnoreCase("Si")||opcion.equalsIgnoreCase("No"))) {
     		System.out.println("Error al ingresar la opcion, por favor ingrese (Si/No)");
     	}
     	if(opcion.equalsIgnoreCase("No")) {
-    		String NombreUsuario = o.getNombres()+" "+o.getApellidos();
+    		String NombreUsuario = o.getNombres()+o.getApellidos();
     		System.out.println("Ingrese su contraseña:");
     		String password = in.next();
+    		System.out.println("Confirme por favor su contraseña");
+    		String password1= in.next(); 
+    		while(!password1.equals(password)) {
+    			System.out.println("Contraseñas no concuerdan Ingrese de nuevo");
+    			password1 = in.next();
+    		}
     		return new Usuario(NombreUsuario,3,password,o);
     	}
     	else {
@@ -122,6 +152,12 @@ public class Usuario implements Comparable<Usuario>
     		String NombreUsuario = in.next();
     		System.out.println("Ingrese su contraseña:");
     		String password = in.next();
+    		System.out.println("Confirme por favor su contraseña");
+    		String password1= in.next(); 
+    		while(!password1.equals(password)) {
+    			System.out.println("Contraseñas no concuerdan Ingrese de nuevo");
+    			password1 = in.next();
+    		}
     		while(password.equals(passwordV)) {
     			System.out.println("Por favor confirme su contraseña:");
     		}
@@ -212,7 +248,7 @@ public class Usuario implements Comparable<Usuario>
 	public boolean equals(Object o) {
 		if(o instanceof Usuario) {
 			Usuario a = (Usuario) o;
-			if(a.NombreUsuario.equalsIgnoreCase(a.NombreUsuario) && a.password.equals(a.NombreUsuario)) return true;
+			if(this.NombreUsuario.equalsIgnoreCase(a.NombreUsuario) && this.password.equals(a.password)) return true;
 			else {
 				return false;
 			}
